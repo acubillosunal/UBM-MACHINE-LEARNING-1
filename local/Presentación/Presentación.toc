@@ -1,0 +1,2 @@
+\babel@toc {spanish}{}
+\beamer@sectionintoc {1}{Anal\IeC {\'\i }tica de Datos}{3}{0}{1}

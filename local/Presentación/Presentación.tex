@@ -1,0 +1,191 @@
+
+
+
+%\documentclass[serif,9pt]{beamer}
+%\setbeamertemplate{navigation symbols}{}
+
+%\setbeamercolor{frametitle}{fg=black,bg=white}
+%\setbeamercolor{title}{fg=black,bg=yellow!85!orange}
+%\usetheme{AnnArbor}
+
+%\documentclass{beamer}
+%Antibes
+\documentclass[xcolor=dvipsnames,c]{beamer}
+\usepackage{dsfont}
+\setbeamertemplate{navigation symbols}{}
+\usepackage{ragged2e}
+\usepackage{amsmath}
+\usepackage{multicol}
+\usepackage{multirow}
+\usefonttheme{professionalfonts}
+\usefonttheme{serif}
+\usefonttheme{structuresmallcapsserif}
+\usepackage{times}
+\usetheme{Copenhagen}
+\useoutertheme{infolines}
+\setbeamertemplate{footline}{}
+\definecolor{Azulsabana}{RGB}{0,38,97}
+\definecolor{Rojosabana}{RGB}{158,11,15}
+\definecolor{Amarillosabana}{RGB}{209,161,13}
+\definecolor{Cafesabana}{RGB}{141,105,74}
+\definecolor{Verdesabana}{RGB}{19,116,170}
+\setbeamercolor{structure}{bg=normal text.bg!0!Azulsabana,fg=normal text.fg!0!Azulsabana}
+\setbeamercolor{section in head/foot}{bg=Azulsabana}
+\setbeamercolor{frametitle}{fg=white,bg=Azulsabana!95}
+%\usecolortheme[RGB={0,38,97}]{structure}
+%\useinnertheme{circles}
+%\useoutertheme{shadow} 
+%\useoutertheme[
+%RGB={141,105,74}]{miniframes}
+%\usepackage{german}
+\usepackage[latin1]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{graphicx}
+%\usepackage{pngtopdf} % figuras
+\usepackage{subfigure} % subfiguras
+%\definecolor{Amarillosabana}{RGB}{209,161,13}
+%\definecolor{Rojosabana}{RGB}{158,11,15}
+%\definecolor{Amarillosabana}{RGB}{209,161,13}
+%\definecolor{Cafesabana}{RGB}{141,105,74}
+\definecolor{mygreen}{cmyk}{0.82,0.11,1,0.25}
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\addtobeamertemplate{block begin}{\pgfsetfillopacity{10}}{\pgfsetfillopacity{10}}
+%\setbeamercolor{structure}{fg=Amarillosabana}
+%\setbeamercolor*{block title example}{fg=Rojosabana!100,bg=Amarillosabana!10}
+%\setbeamercolor*{block body example}{fg= blue,bg= blue!5}
+%\setbeamercolor*{block title example}{fg=white!100,
+%bg=green}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\R}{\mathbb{R}}
+
+\setbeamercolor*{block body example}{fg= black,
+	bg= green!10}
+\setbeamertemplate{blocks}[rounded][shadow=false]
+\addtobeamertemplate{block begin}{\pgfsetfillopacity{10}}{\pgfsetfillopacity{10}}
+\setbeamercolor*{block title alerted}{fg=white!100,
+	bg=Rojosabana!100}
+\setbeamercolor*{block body alerted}{fg= black,
+	bg= red!20}
+
+
+\setbeamercolor{block title}{fg=white!100,
+	bg=Azulsabana!100}
+\setbeamercolor{block body}{fg= black,
+	bg= Azulsabana!10}
+
+
+
+\justifying
+
+\begin{document}
+	
+	\title[Integrales]{Analítica de Datos}  
+	\author[Cálculo Integral]{Alfonso Cubillos}
+	\institute[]{
+		Facultad de Ingeniería\\Universidad de La Sabana\\
+		
+		\vspace{0.5cm}
+		
+		\includegraphics[scale=0.15]{Sabana1}
+	}
+	\date{}
+	
+	\vspace*{3.5cm}
+	
+	{\hspace{3cm}\includegraphics[scale=0.3]{Sabana}	
+	}
+	
+	
+
+
+
+\begin{frame}
+\titlepage
+\end{frame}
+
+%\begin{frame}\frametitle{Contenido}\tableofcontents
+%\end{frame} 
+
+\section{Analítica de Datos}
+\begin{frame}
+  \begin{block}{Definición}
+La analítica es el proceso de descubrir, interpretar y comunicar patrones significativos en los datos. . En pocas palabras, la analítica nos ayuda a ver información y datos significativos que de otro modo no podríamos detectar. La analítica empresarial se centra en el uso de conocimientos derivados de los datos para tomar decisiones más informadas que ayudarán a las organizaciones a aumentar las ventas, reducir los costes y realizar otras mejoras comerciales.
+   \end{block}
+\[
+\includegraphics[scale=0.15]{gooble-analytics.png}
+\]
+\end{frame}
+\begin{frame}
+	\begin{block}{Usos}
+		Las organizaciones pueden aplicar análisis a los datos comerciales para describir, predecir y mejorar el desempeño comercial.
+		\begin{itemize}
+			\item análisis predictivo
+			\item análisis prescriptivo
+			\item gestión de decisiones empresariales
+			\item análisis descriptivo
+			\item análisis de Big Data
+			\item optimización de unidades de almacenamiento y surtido de tiendas
+			\item optimización de marketing y modelado de mezcla de marketing
+			\item web análisis
+			\item análisis de llamadas
+			\item análisis de voz
+			\item modelado de precios y promociones
+			\item análisis de riesgo crediticio
+			\item análisis de fraude.
+		\end{itemize}
+	\end{block}
+\end{frame}
+\begin{frame}
+	\begin{block}{Habilidades}
+		\[
+		\includegraphics[scale=0.35]{DS.png}
+		\]
+	\end{block}
+\end{frame}
+\begin{frame}
+	\begin{block}{Tipos de análisis de datos}
+		¿Qué tan profundo se debe llegar a los datos en busca de ideas o hipótesis basadas en hechos?
+		
+		Hay 4 tipos diferentes de análisis. 
+		\begin{itemize}
+			\item \textbf{Analítica descriptiva}
+			Técnica que responde a la pregunta de qué sucedió.
+			\item \textbf{Analítica diagnóstica}
+			En esta etapa, los datos históricos se pueden contrastar con otros datos para responder a la pregunta de por qué sucedió algo. 
+			\item \textbf{Analítica predictiva}
+			Técnica que se anticipa y sugiere lo que es probable que suceda. Utiliza los hallazgos de análisis descriptivos y de diagnóstico para detectar grupos y excepciones, y para predecir tendencias futuras, lo que lo convierte en una herramienta valiosa para la predicción.  
+		\end{itemize}
+	\end{block}
+\end{frame}
+\begin{frame}
+	\begin{block}{}
+		\begin{itemize}
+			\item \textbf{Analítica prescriptiva}
+			.Es prescribir qué medidas tomar para eliminar un problema futuro o aprovechar al máximo una tendencia. Este tipo de análisis requiere no sólo datos internos históricos sino también información externa debido a la naturaleza de los algoritmos en los que se basa.
+		\end{itemize}
+	\end{block}
+	\begin{block}{Beneficios para las empresas}
+	\begin{itemize}
+		\item El uso de analítica de datos reduce lo costos
+		\item El uso de analítica de datos aumenta la eficiencia
+		\item El uso de analítica de datos mejora los precios
+	\end{itemize}
+\end{block}
+\end{frame}
+\begin{frame}
+	\begin{block}{Herramienta del curso}
+\[
+\includegraphics[scale=0.45]{IMP.png}
+\]
+	\end{block}
+\end{frame}
+\end{document}
+
+
+
+
+
+
+
+
