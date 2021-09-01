@@ -1,5 +1,5 @@
-course_id = 'Analitica_Datos'
-github_repo = 'alfonsocude/%s'%course_id
+course_id = 'Analitica_Sabana_Completo'
+github_repo = 'acubillosde/%s'%course_id
 zip_file_url="https://github.com/%s/archive/main.zip"%github_repo
 
 def get_last_modif_date(localdir):
