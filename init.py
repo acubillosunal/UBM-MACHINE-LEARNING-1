@@ -27,4 +27,3 @@ def init(force_download=False):
             shutil.rmtree("local")
         shutil.move(dirname+"/local", "local")
         shutil.rmtree(dirname)
-
