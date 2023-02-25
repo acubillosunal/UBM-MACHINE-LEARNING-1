@@ -1,13 +1,10 @@
 """
 Este archivo es generado automaticamente.
-
 ###### NO MODIFICAR #########
-
 # cualquier alteración del archivo
 # puede generar una mala calificación o configuracion
 # que puede repercutir negativamente en la 
 # calificación del laboratorio!!!!!
-
 ###### NO MODIFICAR #########
 """
 
@@ -43,7 +40,7 @@ class Laboratory():
         os.system("pip install gspread ")
         # for avoid a bug qith seaborn
         os.system("pip install matplotlib<3.3.1")
-        os.system("pip install scikit-learn==0.22")
+        #os.system("pip install scikit-learn==0.22")
 
     def configure(self):
         print("installing libraries")
@@ -389,4 +386,3 @@ def configure_lab5_2():
     code = ["lab5.py"]
     intro_lab_object = Laboratory(data, code)
     intro_lab_object.configure()
-
