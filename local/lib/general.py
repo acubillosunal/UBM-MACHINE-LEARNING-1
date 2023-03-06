@@ -24,7 +24,7 @@ class Laboratory():
         self.data_path = [f"data/{data}" for data in data_paths]
         self.code_path = code_paths
         self.commons = ['imports.py']
-        self.repo_path = "https://raw.githubusercontent.com/UDEA-Esp-Analitica-y-Ciencia-de-Datos/EACD-04-MACHINE-LEARNING-1/local/"
+        self.repo_path = "https://raw.githubusercontent.com/acubillosunal/UBM-MACHINE-LEARNING-1/local/"
         print("lab configuration started")
 
 
