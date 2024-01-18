@@ -109,28 +109,29 @@ def Gradient(X,y):
 def Poli1():
     zdata = output[0:100].values
     xdata = data['AGE'].iloc[0:100,].values
-    ydata = data['TAX'].iloc[0:100,].values*1000000
-    X = np.c_[xdata.reshape(100,1),ydata.reshape(100,1)]
+    ydata = data['TAX'].iloc[0:100,].values * 1000000
+    X = np.c_[xdata.reshape(100, 1), ydata.reshape(100, 1)]
     scaler = StandardScaler()
     Xn = scaler.fit_transform(X)
-    w=Gradient(Xn,zdata.reshape(100,1))
-    fig = plt.figure(figsize=(10,10))
-    ax = fig.gca(projection='3d')
+    w = Gradient(Xn, zdata.reshape(100, 1))
+
+    fig = plt.figure(figsize=(10, 10))
+    ax = fig.add_subplot(111, projection='3d')  # Specify the 3D projection
     x1 = np.linspace(np.min(xdata), np.max(xdata), num=20)
     x2 = np.linspace(np.min(ydata), np.max(ydata), num=20)
-
     x1, x2 = np.meshgrid(x1, x2)
-    Z = w[0]*(x1-scaler.mean_[0])/np.sqrt(scaler.var_[0]) + w[1]*(x2-scaler.mean_[1])/np.sqrt(scaler.var_[1]) + w[2]
+    Z = w[0] * (x1 - scaler.mean_[0]) / np.sqrt(scaler.var_[0]) + w[1] * (x2 - scaler.mean_[1]) / np.sqrt(scaler.var_[1]) + w[2]
 
     # Plot the surface.
-    surf = ax.plot_surface(x1, x2, Z, cmap=cm.coolwarm,linewidth=0, antialiased=False)
-    ax.scatter3D(xdata, ydata, zdata, cmap='Greens');
+    surf = ax.plot_surface(x1, x2, Z, cmap=cm.coolwarm, linewidth=0, antialiased=False)
+    ax.scatter(xdata, ydata, zdata, c='green')  # Use scatter instead of scatter3D
     ax.set_title("Función de regresión polinomial grado 1")
     ax.set_xlabel("Edad")
     ax.set_ylabel("Tasa de impuesto")
     ax.set_zlabel("HPI x10^3")
-    
+
     return ax
+
     
 def Poli2():
     zdata = output[0:100].values
