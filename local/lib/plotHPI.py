@@ -6,7 +6,7 @@
 
 import pandas as pd
 import math
-get_ipython().run_line_magic('matplotlib', 'inline')
+#get_ipython().run_line_magic('matplotlib', 'inline')
 from mpl_toolkits import mplot3d
 
 import numpy as np
@@ -133,6 +133,9 @@ def Poli1():
     return ax
 
     
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d import Axes3D  # Import Axes3D for 3D plotting
+
 def Poli2():
     zdata = output[0:100].values
     xdata = data['AGE'].iloc[0:100,].values
@@ -143,7 +146,7 @@ def Poli2():
     Xn = scaler.fit_transform(X)
     w=Gradient(Xn,zdata.reshape(100,1))
     fig = plt.figure(figsize=(10,10))
-    ax = fig.gca(projection='3d')
+    ax = fig.add_subplot(111, projection='3d')  
     x1 = np.linspace(np.min(xdata), np.max(xdata), num=20)
     x2 = np.linspace(np.min(ydata), np.max(ydata), num=20)
 
@@ -153,13 +156,14 @@ def Poli2():
     Z = w[0]*(x1-scaler.mean_[0])/np.sqrt(scaler.var_[0]) + w[1]*(x2-scaler.mean_[1])/np.sqrt(scaler.var_[1]) + w[2]*(x3-scaler.mean_[2])/np.sqrt(scaler.var_[2]) + w[3]*(x4-scaler.mean_[3])/np.sqrt(scaler.var_[3]) + w[4]
 
     # Plot the surface.
-    surf = ax.plot_surface(x1, x2, Z, cmap=cm.coolwarm,linewidth=0, antialiased=False)
-    ax.scatter3D(xdata, ydata, zdata, cmap='Greens');
+    surf = ax.plot_surface(x1, x2, Z, cmap='coolwarm', linewidth=0, antialiased=False)
+    ax.scatter3D(xdata, ydata, zdata, cmap='Greens')
     ax.set_title("Función de regresión polinomial grado 2")
     ax.set_xlabel("Edad")
     ax.set_ylabel("Tasa de impuesto")
     ax.set_zlabel("HPI x10^3")
     return ax
+
 
 def HistogramReg(X,Y,x1,x2):
     N = X.shape[0]
@@ -201,7 +205,7 @@ def HisPlot():
     ydata = data['TAX'].iloc[0:100,].values*1000000
     X = np.c_[xdata.reshape(100,1),ydata.reshape(100,1)]
     fig = plt.figure(figsize=(10,10))
-    ax = fig.gca(projection='3d')
+    ax = fig.add_subplot(111, projection='3d')
     x1 = np.linspace(np.min(xdata), np.max(xdata), num=20)
     x2 = np.linspace(np.min(ydata), np.max(ydata), num=20)
 
@@ -231,7 +235,7 @@ def knn_un(n_neighbors=2):
         for j in range(n2):
             Z[i,j] = neigh.predict(np.array([x1[i,j],x2[i,j]]).reshape(1,2))
     fig = plt.figure(figsize=(10,10))
-    ax = fig.gca(projection='3d')
+    ax = fig.add_subplot(111, projection='3d')
     # Plot the surface.
     surf = ax.plot_surface(x1, x2, Z, cmap=cm.coolwarm,
                        linewidth=0, antialiased=False)
@@ -263,7 +267,7 @@ def knn_n(n_neighbors=2):
             xvaln = scaler.transform(xval)
             Z[i,j] = neigh.predict(xvaln)
     fig = plt.figure(figsize=(10,10))
-    ax = fig.gca(projection='3d')
+    ax = fig.add_subplot(111, projection='3d')
     # Plot the surface.
     surf = ax.plot_surface(x1, x2, Z, cmap=cm.coolwarm,
                        linewidth=0, antialiased=False)
@@ -290,7 +294,7 @@ def ParzenPlot_un(h):
             xval = np.array([x1[i,j],x2[i,j]]).reshape(1,2)
             Z[i,j] = nadaraya_watson(X,xval,zdata.reshape(100,1),h)
     fig = plt.figure(figsize=(10,10))
-    ax = fig.gca(projection='3d')
+    ax = fig.add_subplot(111, projection='3d')
     # Plot the surface.
     surf = ax.plot_surface(x1, x2, Z, cmap=cm.coolwarm, linewidth=0, antialiased=False)
     ax.scatter3D(xdata, ydata, zdata, cmap='Greens');
@@ -318,7 +322,7 @@ def ParzenPlot_n(h):
             xvaln = scaler.transform(xval)
             Z[i,j] = nadaraya_watson(Xn,xvaln,zdata.reshape(100,1),h)
     fig = plt.figure(figsize=(10,10))
-    ax = fig.gca(projection='3d')
+    ax = fig.add_subplot(111, projection='3d')
     # Plot the surface.
     surf = ax.plot_surface(x1, x2, Z, cmap=cm.coolwarm, linewidth=0, antialiased=False)
     ax.scatter3D(xdata, ydata, zdata, cmap='Greens');
@@ -350,7 +354,7 @@ def SVRPlot_n(C,gamma):
             xvaln = scaler.transform(xval)
             Z[i,j] = clf.predict(xvaln)
     fig = plt.figure(figsize=(10,10))
-    ax = fig.gca(projection='3d')
+    ax = fig.add_subplot(111, projection='3d')
     # Plot the surface.
     surf = ax.plot_surface(x1, x2, Z, cmap=cm.coolwarm, linewidth=0, antialiased=False)
     ax.scatter3D(xdata, ydata, zdata, cmap='Greens');
